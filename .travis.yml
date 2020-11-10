@@ -2,13 +2,18 @@ services:
   - docker
 
 before_install:
-  - docker build -t jblanchard/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t jblanch94/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true jblanchard/react-test npm test
+  - docker run -e CI=true jblanch94/react-test npm test
 
 after_success:
-  - docker build -t jblanchard/multi-client ./client
-  - docker build -t jblanchard/multi-nginx ./nginx
-  - docker build -t jblanchard/multi-server ./server
-  - docker build -t jblanchard/multi-worker ./worker
+  - docker build -t jblanch94/multi-client ./client
+  - docker build -t jblanch94/multi-nginx ./nginx
+  - docker build -t jblanch94/multi-server ./server
+  - docker build -t jblanch94/multi-worker ./worker
+  - echo "$DOCKER_ID" | docker login -u "$DOCKER_PASSWORD" --password-stdin
+  - docker push jblanch94/multi-client
+  - docker push jblanch94/multi-nginx
+  - docker push jblanch94/multi-server
+  - docker push jblanch94/multi-worker
