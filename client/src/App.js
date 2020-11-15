@@ -6,8 +6,8 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 function App() {
   return (
     <Router>
-      <h1>Fib Calculator</h1>
       <div className="App">
+        <h1>Fib Calculator</h1>
         <Link to="/">Home</Link>
         <Link to="/otherpage">Other Page</Link>
         <Route path="/" exact component={Fib} />
