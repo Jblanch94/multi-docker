@@ -1,6 +1,6 @@
 {
   "AWSEBDockerrunVersion": 2,
-  "containerDefenitions": [
+  "containerDefinitions": [
     {
       "name": "client",
       "image": "jblanch94/multi-client",
